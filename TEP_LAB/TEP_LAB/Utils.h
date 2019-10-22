@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include <iostream>
 template<typename T>
 void PrintTable(T* tab, int size) {
@@ -9,3 +10,4 @@ void PrintTable(T* tab, int size) {
 	}
 	std::cout << std::endl;
 }
+
