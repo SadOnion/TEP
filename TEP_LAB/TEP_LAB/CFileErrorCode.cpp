@@ -1,4 +1,5 @@
-#include "CFileErrorCode.h"
+#define _CRT_SECURE_NO_DEPRECATE
+#include "CErrors.h"
 
 CFileErrorCode::CFileErrorCode()
 {
@@ -8,6 +9,7 @@ CFileErrorCode::CFileErrorCode()
 CFileErrorCode::CFileErrorCode(std::string fileName)
 {
 	file = fopen(&fileName[0], "w+");
+	
 }
 
 CFileErrorCode::~CFileErrorCode()

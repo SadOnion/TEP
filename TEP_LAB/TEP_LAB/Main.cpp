@@ -1,6 +1,7 @@
 #include <iostream>
 #include "CTable.h"
 #include "Utils.h"
+#include "CErrors.h"
 
 
 void ModifyTable(CTable* tab, int newSize) {
@@ -13,12 +14,21 @@ void ModifyTable(CTable tab, int newSize) {
 
 void List2() {
 
-	CTable table("Table1", 3);
-	CTable table1("Table2", 4);
-	ModifyTable(table, 5);
+	CTable table1("Table1", 3);
+	CTable table2("Table2", 4);
+	
 
-	ModifyTable(&table1, 5);
-
+	table2.SetValueAt(0, 1);
+	table2.SetValueAt(1, 2);
+	table2.SetValueAt(2, 3);
+	table2.SetValueAt(3, 4);
+	table1.Print();
+	table2.Print();
+	table2.SetNewSize(7);
+	table2.Print();
+	table2.Double();
+	table2.SetValueAt(10);
+	table2.Print();
 	CTable* tabTab = new CTable[3];
 
 	delete[] tabTab;
@@ -48,9 +58,24 @@ void List3() {
 }
 
 void List4() {
-
+	CFileErrorCode cFileError;
+	CFileLastError cFileLastError;
+	CFileThrowEx cFileThrowEx;
+	std::string fileName = "TestFile.txt";
+	
+	
+	
+	
+	for (size_t i = 0; i < 10; i++)
+	{
+		cFileLastError.OpenFile(fileName);
+		std::cout << cFileLastError.GetLastError()<<std::endl;
+		std::cout << cFileError.OpenFile(fileName) << std::endl;
+		cFileThrowEx.OpenFile(fileName);
+	}
+	
 }
 int main()
 {
-	List3();
+	List2();
 }

@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_DEPRECATE
-#include "CFileLastError.h"
+#include "CErrors.h"
 
 CFileLastError::CFileLastError()
 {
@@ -24,6 +24,8 @@ void CFileLastError::OpenFile(std::string fileName)
 {
 	lastError = false;
 	file = fopen(&fileName[0], "w+");
+	if (file == NULL)
+		lastError = true;
 }
 
 void CFileLastError::PrintLine(std::string sText)

@@ -5,9 +5,9 @@
 class CFileThrowEx {
 public:
 	CFileThrowEx();
-	CFileThrowEx(std::string sFileName);
+	CFileThrowEx(std::string fileName);
 	~CFileThrowEx();
-	void OpenFile(std::string sFileName);
+	void OpenFile(std::string fileName);
 	void PrintLine(std::string sText);
 	void PrintManyLines(std::vector<std::string> sText);
 private:

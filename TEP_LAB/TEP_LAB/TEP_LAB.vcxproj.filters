@@ -24,6 +24,12 @@
     <ClCompile Include="CFileLastError.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CFileThrowEx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CFileErrorCode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CTable.h">
@@ -32,7 +38,7 @@
     <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CFileLastError.h">
+    <ClInclude Include="CErrors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

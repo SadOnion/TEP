@@ -6,9 +6,9 @@
 class CFileLastError {
 public:
 	CFileLastError();
-	CFileLastError(std::string sFileName);
+	CFileLastError(std::string fileName);
 	~CFileLastError();
-	void OpenFile(std::string sFileName);
+	void OpenFile(std::string fileName);
 	void PrintLine(std::string sText);
 	void PrintManyLines(std::vector<std::string> sText);
 	bool GetLastError() { return(lastError); }

@@ -151,12 +151,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CFileErrorCode.cpp" />
     <ClCompile Include="CFileLastError.cpp" />
+    <ClCompile Include="CFileThrowEx.cpp" />
     <ClCompile Include="CTable.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CFileLastError.h" />
+    <ClInclude Include="CErrors.h" />
     <ClInclude Include="CTable.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>

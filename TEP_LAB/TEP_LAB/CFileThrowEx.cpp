@@ -1,4 +1,5 @@
-#include "CFileThrowEx.h"
+#define _CRT_SECURE_NO_DEPRECATE
+#include "CErrors.h"
 #include <iostream>
 
 CFileThrowEx::CFileThrowEx()
@@ -19,13 +20,25 @@ CFileThrowEx::~CFileThrowEx()
 
 void CFileThrowEx::OpenFile(std::string fileName)
 {
-	file = fopen(&fileName[0], "w+");;
+	file = fopen(&fileName[0], "w+");
+	try {
+		
+		if (file == NULL) {
+			std::cout << "e";
+			throw 66;
+		}
+
+	}
+	catch (int e) {
+		std::cout << "An exception # " << e << '\n';
+	}
 }
 
 void CFileThrowEx::PrintLine(std::string sText)
 {
 	try {
-		if (file == NULL) throw 1;
+		if (file == NULL) throw 66;
+		
 		fprintf(file, &sText[0]);
 	}
 	catch (int e) {

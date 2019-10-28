@@ -19,7 +19,9 @@ public:
 	void SetName(std::string newName);
 	bool SetNewSize(int newSize);
 	void SetValueAt(int iOffset, int newValue);
+	void SetValueAt(int newValue);
 	void Print();
+	void Double();
 	CTable* Clone();
 
 	CTable operator+(CTable& otherTab);

@@ -5,9 +5,9 @@
 class CFileErrorCode {
 public:
 	CFileErrorCode();
-	CFileErrorCode(std::string sFileName);
+	CFileErrorCode(std::string fileName);
 	~CFileErrorCode();
-	bool OpenFile(std::string sFileName);
+	bool OpenFile(std::string fileName);
 	bool PrintLine(std::string sText);
 	bool PrintManyLines(std::vector<std::string> sText);
 private:

@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Utils.h"
 
+
 CTable::CTable()
 {
 	name = DEFAULT_NAME;
@@ -12,10 +13,16 @@ CTable::CTable()
 
 CTable::CTable(std::string name, int tableLength)
 {
+	if (tableLength <= 0) {
+		this->name = DEFAULT_NAME;
+		size = DEFAULT_SIZE;
+	}
+	else {
 	this->name = name;
 	size = tableLength;
-	std::cout << "parametr: " + name << std::endl;
+	}
 	table = new int[size];
+	std::cout << "parametr: " + name << std::endl;
 }
 
 CTable::CTable(const CTable& other)
@@ -55,7 +62,7 @@ bool CTable::SetNewSize(int newSize)
 
 		for (int i = size; i < newSize; i++)
 		{
-			tempTable[i] = 0;
+			tempTable[i] = table[i % size];
 		}
 	}
 	else 
@@ -77,14 +84,32 @@ void CTable::SetValueAt(int iOffset, int newValue)
 	table[iOffset] = newValue;
 }
 
+void CTable::SetValueAt(int newValue)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		table[i] = newValue;
+	}
+}
+
 void CTable::Print()
 {
+	std::cout << name << std::endl;
 	PrintTable(table, size);
+}
+
+void CTable::Double()
+{
+	SetNewSize(size * 2);
 }
 
 CTable* CTable::Clone()
 {
-	CTable* newTable = new CTable(*this);
+	CTable* newTable = new CTable(name,size);
+	for (size_t i = 0; i < size; i++)
+	{
+		newTable->table[i] = table[i];
+	}
 	return newTable;
 }
 
