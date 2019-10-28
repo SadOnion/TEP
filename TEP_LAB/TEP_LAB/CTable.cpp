@@ -55,12 +55,7 @@ bool CTable::SetNewSize(int newSize)
 	int* tempTable = new int[newSize];
 	if (newSize > size) 
 	{
-		for (int i = 0; i < size; i++)
-		{
-			tempTable[i] = table[i];
-		}
-
-		for (int i = size; i < newSize; i++)
+		for (int i = 0; i < newSize; i++)
 		{
 			tempTable[i] = table[i % size];
 		}

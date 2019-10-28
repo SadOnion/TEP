@@ -4,37 +4,7 @@
 #include "CErrors.h"
 
 
-void ModifyTable(CTable* tab, int newSize) {
-	tab->SetNewSize(newSize);
-}
 
-void ModifyTable(CTable tab, int newSize) {
-	tab.SetNewSize(newSize);
-}
-
-void List2() {
-
-	CTable table1("Table1", 3);
-	CTable table2("Table2", 4);
-	
-
-	table2.SetValueAt(0, 1);
-	table2.SetValueAt(1, 2);
-	table2.SetValueAt(2, 3);
-	table2.SetValueAt(3, 4);
-	table1.Print();
-	table2.Print();
-	table2.SetNewSize(7);
-	table2.Print();
-	table2.Double();
-	table2.SetValueAt(10);
-	table2.Print();
-	CTable* tabTab = new CTable[3];
-
-	delete[] tabTab;
-
-	CTable tabTable[4];
-}
 
 void List3() {
 	
@@ -77,5 +47,5 @@ void List4() {
 }
 int main()
 {
-	List2();
+	
 }

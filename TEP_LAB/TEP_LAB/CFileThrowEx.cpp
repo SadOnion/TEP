@@ -61,3 +61,5 @@ void CFileThrowEx::PrintManyLines(std::vector<std::string> sText)
 		std::cout << "An exception # " << e << '\n';
 	}
 }
+
+
