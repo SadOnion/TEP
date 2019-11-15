@@ -18,3 +18,13 @@ private:
 	CNodeStatic* parentNode;
 	int value;
 };	
+class CTreeStatic
+{
+public:
+	CTreeStatic();
+	~CTreeStatic();
+	CNodeStatic* pcGetRoot() { return(&root); }
+	void PrintTree();
+private:
+	CNodeStatic root
+};

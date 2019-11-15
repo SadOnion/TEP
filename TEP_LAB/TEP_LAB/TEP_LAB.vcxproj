@@ -156,11 +156,12 @@
     <ClCompile Include="CFileThrowEx.cpp" />
     <ClCompile Include="CNodeStatic.cpp" />
     <ClCompile Include="CTable.cpp" />
+    <ClCompile Include="CTree.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CErrors.h" />
-    <ClInclude Include="CNodeStatic.h" />
+    <ClInclude Include="CTree.h" />
     <ClInclude Include="CTable.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>

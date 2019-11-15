@@ -1,4 +1,4 @@
-#include "CNodeStatic.h"
+#include "CTree.h"
 
 CNodeStatic::~CNodeStatic()
 {

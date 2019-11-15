@@ -2,7 +2,7 @@
 #include "CTable.h"
 #include "Utils.h"
 #include "CErrors.h"
-#include "CNodeStatic.h"
+#include "CTree.h"
 
 
 
