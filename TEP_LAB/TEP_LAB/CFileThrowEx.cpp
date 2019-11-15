@@ -18,47 +18,41 @@ CFileThrowEx::~CFileThrowEx()
 	fclose(file);
 }
 
-void CFileThrowEx::OpenFile(std::string fileName)
+void CFileThrowEx::OpenFile(std::string fileName) 
 {
-	file = fopen(&fileName[0], "w+");
-	try {
-		
+	file = fopen(fileName.c_str(), "w+");
 		if (file == NULL) {
-			std::cout << "e";
 			throw 66;
 		}
 
-	}
-	catch (int e) {
-		std::cout << "An exception # " << e << '\n';
-	}
-}
-
-void CFileThrowEx::PrintLine(std::string sText)
-{
-	try {
-		if (file == NULL) throw 66;
-		
-		fprintf(file, &sText[0]);
-	}
-	catch (int e) {
-		std::cout << "An exception # " << e << '\n';
-	}
-	
 }
 
 void CFileThrowEx::PrintManyLines(std::vector<std::string> sText)
 {
-	try {
+	
 		if (file == NULL) throw 1;
 		std::vector<std::string>::iterator itr;
 		for (itr = sText.begin(); itr != sText.end(); itr++)
 		{
 			PrintLine(*itr);
+			PrintLine("\n");
 		}
-	}
-	catch (int e) {
-		std::cout << "An exception # " << e << '\n';
+	
+}
+void CFileThrowEx::PrintLine(std::string sText)
+{
+	
+		if (file == NULL) throw 66;
+		
+		int result = fprintf(file, sText.c_str());
+		if (result < 0) throw 66;
+	
+}
+
+void CFileThrowEx::CloseFile() {
+	if (file != NULL) {
+		int result = fclose(file);
+		if (result < 0) throw 10;
 	}
 }
 

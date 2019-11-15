@@ -24,5 +24,7 @@ public:
 	void Double();
 	CTable* Clone();
 
-	CTable operator+(CTable& otherTab);
+	CTable operator+(const CTable& otherTab);
+	CTable& operator-=(int value);
+	CTable& operator=(const CTable& otherTable);
 };

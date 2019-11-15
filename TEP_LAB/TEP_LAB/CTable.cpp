@@ -51,7 +51,6 @@ void CTable::SetName(std::string newName)
 bool CTable::SetNewSize(int newSize)
 {
 	if (newSize == size) return true;
-
 	int* tempTable = new int[newSize];
 	if (newSize > size) 
 	{
@@ -108,18 +107,52 @@ CTable* CTable::Clone()
 	return newTable;
 }
 
-CTable CTable::operator+(CTable& otherTab)
+CTable CTable::operator+(const CTable& otherTab)
 {
-	int* tempTab = table;
-	table = new int[size + otherTab.size];
+	CTable returnTable(name,size+otherTab.size);
+	
 	for (int i = 0; i < size; i++)
 	{
-		table[i] = tempTab[i];
+		returnTable.table[i] = table[i];
 	}
-	for (int i = size; i < size+otherTab.size; i++)
+	for (int i = 0; i < otherTab.size; i++)
 	{
-		table[i] = otherTab.table[i];
+		returnTable.table[i + size] = otherTab.table[i];
 	}
-	delete tempTab;
+
+	return returnTable;
+}
+
+CTable& CTable::operator-=(int value)
+{
+	if (value < size && value >= 0) {
+		int newLength = size - value;
+		int* newTab = new int[newLength];
+
+		for (size_t i = 0; i < newLength; i++)
+		{
+			newTab[i] = table[i + value];
+		}
+		delete table;
+		table = newTab;
+		size -= value;
+	}
+	
+
 	return *this;
 }
+
+CTable& CTable::operator=(const CTable& otherTable)
+{
+	name = otherTable.name;
+	size = otherTable.size;
+	delete table;
+	table = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		table[i] = otherTable.table[i];
+	}
+
+	return *this;
+}
+

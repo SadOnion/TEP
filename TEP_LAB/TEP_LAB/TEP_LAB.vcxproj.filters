@@ -30,6 +30,9 @@
     <ClCompile Include="CFileErrorCode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CNodeStatic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CTable.h">
@@ -39,6 +42,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CErrors.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CNodeStatic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

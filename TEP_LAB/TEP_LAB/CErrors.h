@@ -11,6 +11,7 @@ public:
 	bool OpenFile(std::string fileName);
 	bool PrintLine(std::string sText);
 	bool PrintManyLines(std::vector<std::string> sText);
+	bool CloseFile();
 private:
 	FILE* file;
 };
@@ -22,6 +23,7 @@ public:
 	~CFileThrowEx();
 	void OpenFile(std::string fileName);
 	void PrintLine(std::string sText);
+	void CloseFile();
 	void PrintManyLines(std::vector<std::string> sText);
 private:
 	FILE* file;
@@ -35,6 +37,7 @@ public:
 	void OpenFile(std::string fileName);
 	void PrintLine(std::string sText);
 	void PrintManyLines(std::vector<std::string> sText);
+	void CloseFile();
 	bool GetLastError() { return(lastError); }
 private:
 	FILE* file;
