@@ -151,17 +151,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CDynamicTree.cpp" />
     <ClCompile Include="CFileErrorCode.cpp" />
     <ClCompile Include="CFileLastError.cpp" />
     <ClCompile Include="CFileThrowEx.cpp" />
-    <ClCompile Include="CNodeStatic.cpp" />
     <ClCompile Include="CTable.cpp" />
-    <ClCompile Include="CTree.cpp" />
+    <ClCompile Include="CStaticTree.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CDynamicTree.h" />
     <ClInclude Include="CErrors.h" />
-    <ClInclude Include="CTree.h" />
+    <ClInclude Include="CStaticTree.h" />
     <ClInclude Include="CTable.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>

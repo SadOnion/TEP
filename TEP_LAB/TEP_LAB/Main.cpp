@@ -2,7 +2,8 @@
 #include "CTable.h"
 #include "Utils.h"
 #include "CErrors.h"
-#include "CTree.h"
+#include "CStaticTree.h"
+#include "CDynamicTree.h"
 
 
 
@@ -126,6 +127,14 @@ int main()
 	c_root.GetChild(1)->GetChild(0)->SetValue(21);
 	c_root.GetChild(1)->GetChild(1)->SetValue(22);
 	c_root.PrintAllBelow();
-
 	c_root.GetChild(0)->GetChild(1)->PrintUp();
+	std::cout << std::endl;
+	CTreeDynamic tree;
+	tree.GetRoot()->AddNewChild();
+	tree.GetRoot()->AddNewChild();
+	tree.GetRoot()->GetChild(0)->SetValue(10);
+	tree.GetRoot()->GetChild(1)->SetValue(20);
+	tree.GetRoot()->GetChild(0)->AddNewChild();
+	tree.GetRoot()->GetChild(0)->GetChild(0)->SetValue(30);
+	tree.PrintTree();
 }

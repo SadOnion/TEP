@@ -18,6 +18,7 @@ private:
 	CNodeStatic* parentNode;
 	int value;
 };	
+
 class CTreeStatic
 {
 public:
@@ -25,6 +26,9 @@ public:
 	~CTreeStatic();
 	CNodeStatic* pcGetRoot() { return(&root); }
 	void PrintTree();
+	bool MoveSubtree(CNodeStatic* parentNode, CNodeStatic newChildNode);
 private:
-	CNodeStatic root
+	CNodeStatic root;
 };
+
+

@@ -30,10 +30,10 @@
     <ClCompile Include="CFileErrorCode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CNodeStatic.cpp">
+    <ClCompile Include="CDynamicTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CTree.cpp">
+    <ClCompile Include="CStaticTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,7 +47,10 @@
     <ClInclude Include="CErrors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CTree.h">
+    <ClInclude Include="CStaticTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CDynamicTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
