@@ -1,6 +1,7 @@
 #include "CDynamicTree.h"
 
-CNodeDynamic::~CNodeDynamic()
+template <typename T>
+CNodeDynamic<T>::~CNodeDynamic()
 {
 	for (size_t i = 0; i < children.size(); i++)
 	{
@@ -8,55 +9,98 @@ CNodeDynamic::~CNodeDynamic()
 	}
 }
 
-void CNodeDynamic::AddNewChild()
+template <typename T>
+void CNodeDynamic<T>::AddNewChild()
 {
 	CNodeDynamic* newNode = new CNodeDynamic();
 	newNode->parentNode = this;
 	children.push_back(newNode);
 }
-
-CTreeDynamic* CNodeDynamic::GetChild(int iChildOffset)
+template <typename T>
+void CNodeDynamic<T>::AddNewChild(CNodeDynamic<T>* node)
 {
-	if(iChildOffset >= children.size()) return NULL;
-	CTreeDynamic* tree;
-	CNodeDynamic* node = children.at(iChildOffset);
-	tree->GetRoot()->SetValue(node->value);
-	tree->GetRoot()->children = node->children;
-	return tree;
-	
+	children.push_back(node);
 }
-
-void CNodeDynamic::PrintAllBelow()
+template <typename T>
+CNodeDynamic<T>* CNodeDynamic<T>::GetChild(int iChildOffset)
+{
+	if (iChildOffset >= children.size()) return NULL;
+	return children.at(iChildOffset);
+}
+template <typename T>
+void CNodeDynamic<T>::PrintAllBelow()
 {
 	Print();
+
 	for (size_t i = 0; i < children.size(); i++)
 	{
 		children.at(i)->PrintAllBelow();
 	}
 }
-
-CTreeDynamic::CTreeDynamic()
+template <typename T>
+CTreeDynamic<T>::CTreeDynamic()
 {
-	root = new CNodeDynamic();
-}
-
-CTreeDynamic::~CTreeDynamic()
+	root = new CNodeDynamic<T>();
+};
+template <typename T>
+CTreeDynamic<T>::~CTreeDynamic()
 {
 	delete root;
-}
-
-void CTreeDynamic::PrintTree()
+};
+template <typename T>
+void CTreeDynamic<T>::PrintTree()
 {
 	root->PrintAllBelow();
 }
-
-bool CTreeDynamic::MoveSubtree(CNodeDynamic* parentNode, CNodeDynamic* newChildNode)
+template <typename T>
+bool CTreeDynamic<T>::MoveSubtree(CNodeDynamic<T> * parentNode, CNodeDynamic<T> * newChildNode)
 {
-	parentNode->AddNewChild();
-	CNodeDynamic* newNode = new CNodeDynamic();
-	newNode->
-	delete newChildNode;
-	parentNode->GetChild(parentNode->GetChildrenNumber() - 1)->root = newChildNode;
-	delete newChildNode;
-	return false;
+	if (parentNode == NULL || newChildNode == NULL) return false;
+	parentNode->AddNewChild(newChildNode);
+
+	CNodeDynamic<T> * parent = newChildNode->parentNode;
+
+	for (size_t i = 0; i < parent->GetChildrenNumber(); i++)
+	{
+		if (parent->children.at(i) == newChildNode) parent->children.erase(parent->children.begin() + i);
+	}
+	return true;
 }
+template <typename T>
+bool CTreeDynamic<T>::SameTree(CNodeDynamic<T> * node1, CNodeDynamic<T> * node2)
+{
+	CNodeDynamic<T>* root1 = node1;
+	CNodeDynamic<T>* root2 = node2;
+	if (root1 == NULL) return false;
+	if (root2 == NULL) return false;
+	while (root1->parentNode != NULL) {
+		root1 = root1->parentNode;
+	}
+	while (root2->parentNode != NULL) {
+		root2 = root2->parentNode;
+	}
+	return root1 == root2;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

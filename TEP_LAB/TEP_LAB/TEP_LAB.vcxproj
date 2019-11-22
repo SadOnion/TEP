@@ -151,7 +151,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CDynamicTree.cpp" />
     <ClCompile Include="CFileErrorCode.cpp" />
     <ClCompile Include="CFileLastError.cpp" />
     <ClCompile Include="CFileThrowEx.cpp" />

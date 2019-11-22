@@ -1,116 +1,10 @@
 #include <iostream>
-#include "CTable.h"
-#include "Utils.h"
-#include "CErrors.h"
 #include "CStaticTree.h"
 #include "CDynamicTree.h"
 
 
 
-void List3() {
-	
-	CTable tab0, tab1,tab2,tab3;
-	/*
-	tab0.SetNewSize(6);
-	tab1.SetNewSize(4);
 
-	tab0.SetValueAt(0, 1);
-	tab0.SetValueAt(1, 2);
-	tab0.SetValueAt(2, 3);
-	tab0.SetValueAt(3, 4);
-	tab0.SetValueAt(4, 5);
-	tab0.SetValueAt(5, 6);
-	tab1.SetValueAt(0, 51);
-	tab1.SetValueAt(1, 52);
-	tab1.SetValueAt(2, 53);
-	tab1.SetValueAt(3, 54);
-	tab1.SetValueAt(2, 123);
-	*/
-
-	tab0.Print();
-	tab1.Print();
-	tab2.Print();
-	tab2 = tab1 =tab0;
-	std::cout << "Print after tab2 = tab1 =tab0 : " << std::endl;
-	tab2.Print();
-	tab3 = tab2 -= 2;
-	std::cout << "Print after tab3 = tab2-=2 : " << std::endl;
-	tab3.Print();
-	tab3 -= 2;
-	tab3.Print();
-	CTable t = tab1 + tab2;
-}
-
-void ThrowEx() {
-	std::string fileName = "TestFile.txt";
-	CFileThrowEx cFileThrowEx;
-	
-	
-	
-	std::vector<std::string> vec;
-	for (size_t i = 0; i < 10; i++)
-	{
-		vec.push_back(std::to_string(i));
-		try {
-			cFileThrowEx.OpenFile("*dasd");
-			cFileThrowEx.CloseFile();
-		}
-		catch (int e) {
-			
-			std::cout << i<<".Exception code:" << e<<std::endl;
-		}
-		try {
-			cFileThrowEx.OpenFile("TestFile.txt");
-			cFileThrowEx.PrintManyLines(vec);
-			cFileThrowEx.CloseFile();
-		}
-		catch (int e) {
-			std::cout << ".Exception code:" << e << std::endl;
-		}
-		
-	}
-	
-}
-void LastError() {
-	std::string fileName = "TestFile.txt";
-	CFileLastError cFileLastError;
-
-	std::vector<std::string> vec;
-	for (size_t i = 0; i < 10; i++)
-	{
-		vec.push_back(std::to_string(i*2));
-		cFileLastError.OpenFile("*das");
-		if (cFileLastError.GetLastError()) std::cout << i << ".Unable to open file" << std::endl;
-		else cFileLastError.CloseFile();
-		cFileLastError.OpenFile(fileName);
-		if (!cFileLastError.GetLastError()) cFileLastError.PrintManyLines(vec);
-		cFileLastError.CloseFile();
-	}
-}
-void ErrorCode() {
-	std::string fileName = "TestFile.txt";
-	CFileErrorCode cFileErrorCode;
-
-	std::vector<std::string> vec;
-	for (size_t i = 0; i < 10; i++)
-	{
-		vec.push_back(std::to_string(i * 3));
-		
-		if (cFileErrorCode.OpenFile("*das") == false) 
-		{
-			std::cout << i << ".Unable to open file" << std::endl;
-		}
-		else {
-			cFileErrorCode.CloseFile();
-		}
-
-		if (cFileErrorCode.OpenFile(fileName)) 
-		{
-			cFileErrorCode.PrintManyLines(vec);
-			cFileErrorCode.CloseFile();
-		}
-	}
-}
 int main()
 {
 	CNodeStatic c_root;
@@ -129,7 +23,7 @@ int main()
 	c_root.PrintAllBelow();
 	c_root.GetChild(0)->GetChild(1)->PrintUp();
 	std::cout << std::endl;
-	CTreeDynamic tree;
+	CTreeDynamic<int> tree;
 	tree.GetRoot()->AddNewChild();
 	tree.GetRoot()->AddNewChild();
 	tree.GetRoot()->GetChild(0)->SetValue(10);
@@ -137,4 +31,19 @@ int main()
 	tree.GetRoot()->GetChild(0)->AddNewChild();
 	tree.GetRoot()->GetChild(0)->GetChild(0)->SetValue(30);
 	tree.PrintTree();
+	CTreeDynamic<int> tree2;
+	tree.GetRoot()->AddNewChild();
+	tree.GetRoot()->AddNewChild();
+	tree.GetRoot()->GetChild(0)->SetValue(100);
+	tree.GetRoot()->GetChild(1)->SetValue(200);
+	tree.GetRoot()->GetChild(0)->AddNewChild();
+	tree.GetRoot()->GetChild(0)->GetChild(0)->SetValue(300);
+	tree.PrintTree();
+	std::cout << std::endl;
+	std::cout << " same: " << tree.SameTree(tree.GetRoot(), tree2.GetRoot()) << std::endl;
+	std::cout << " same: " << tree.MoveSubtree(tree.GetRoot()->GetChild(0), tree2.GetRoot()->GetChild(0)) << std::endl;
+	tree.PrintTree();
+	std::cout <<  std::endl;
+	tree2.PrintTree();
+	std::cout << " same: " << tree.SameTree(tree.GetRoot()->GetChild(2), tree.GetRoot()->GetChild(0)) << std::endl;
 }

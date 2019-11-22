@@ -16,7 +16,7 @@ void CTreeStatic::PrintTree()
 
 bool CTreeStatic::MoveSubtree(CNodeStatic* parentNode, CNodeStatic newChildNode)
 {
-	newChildNode.
+	return true;
 }
 
 CNodeStatic::~CNodeStatic()

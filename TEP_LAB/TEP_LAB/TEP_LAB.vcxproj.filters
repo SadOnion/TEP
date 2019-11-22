@@ -30,9 +30,6 @@
     <ClCompile Include="CFileErrorCode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CDynamicTree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CStaticTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
