@@ -83,6 +83,12 @@ bool CTreeDynamic<T>::SameTree(CNodeDynamic<T> * node1, CNodeDynamic<T> * node2)
 
 }
 
+template<typename T>
+int CTreeDynamic<T>::Height()
+{
+	return 0;
+}
+
 
 
 

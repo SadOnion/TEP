@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="CDynamicTree.h" />
     <ClInclude Include="CErrors.h" />
+    <ClInclude Include="CMySmartPointer.h" />
     <ClInclude Include="CStaticTree.h" />
     <ClInclude Include="CTable.h" />
     <ClInclude Include="Utils.h" />
