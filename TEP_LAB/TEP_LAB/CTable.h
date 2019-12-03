@@ -14,6 +14,7 @@ public:
 	CTable();
 	CTable(std::string name, int tableLength);
 	CTable(const CTable& other);
+	CTable(CTable &&other); 
 	~CTable();
 
 	void SetName(std::string newName);
@@ -23,7 +24,7 @@ public:
 	void Print();
 	void Double();
 	CTable* Clone();
-
+	CTable& operator=(CTable &&other);
 	CTable operator+(const CTable& otherTab);
 	CTable& operator-=(int value);
 	CTable& operator=(const CTable& otherTable);

@@ -6,7 +6,7 @@ public:
 	CRefCounter() { counter=0; }
 	int Add() { return(++counter); }
 	int Dec() { return(--counter); };
-	int Get() { return(counter); }
+	int Get() const { return(counter); }
 private:
 	int counter;
 };//class CRefCounter

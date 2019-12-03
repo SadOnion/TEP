@@ -37,6 +37,14 @@ CTable::CTable(const CTable& other)
 	std::cout << "kopiuj: " + name << std::endl;
 }
 
+CTable::CTable(CTable&& other)
+{
+	table = other.table;
+	size = other.size;
+	other.table = NULL;
+	std::cout << "MOVE "; 
+}
+
 CTable::~CTable()
 {
 	std::cout << "usuwam: " + name << std::endl;
@@ -107,6 +115,15 @@ CTable* CTable::Clone()
 	return newTable;
 }
 
+CTable& CTable::operator=(CTable&& other)
+{
+	table = other.table;
+	size = other.size;
+	other.table = NULL;
+	return *this;
+	
+}
+
 CTable CTable::operator+(const CTable& otherTab)
 {
 	CTable returnTable(name,size+otherTab.size);
@@ -120,7 +137,7 @@ CTable CTable::operator+(const CTable& otherTab)
 		returnTable.table[i + size] = otherTab.table[i];
 	}
 
-	return returnTable;
+	return std::move(returnTable);
 }
 
 CTable& CTable::operator-=(int value)
@@ -144,6 +161,7 @@ CTable& CTable::operator-=(int value)
 
 CTable& CTable::operator=(const CTable& otherTable)
 {
+	
 	name = otherTable.name;
 	size = otherTable.size;
 	delete table;
